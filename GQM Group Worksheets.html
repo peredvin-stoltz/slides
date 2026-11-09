@@ -1,0 +1,318 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>GQM Group Worksheets</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Layout: a stack of A4 sheets, one per workshop step; on paper each sheet is one page. Single light look on purpose, since it is made for printing. */
+:root {
+  color-scheme: light;
+  --ink: #16213A;        /* navy, matches the workshop deck */
+  --ink-soft: #4A5160;
+  --muted: #6B7280;
+  --rule: #C9CED6;
+  --rule-strong: #8E96A3;
+  --paper: #FFFFFF;
+  --desk: #E9E6DF;
+  --blue: #2E5E99;
+  --blue-tint: #E7EDF5;
+  --orange: #B04A17;
+  --orange-tint: #FBEFE4;
+  --display: 'Space Grotesk', 'Arial', sans-serif;
+  --body: 'IBM Plex Sans', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 10pt;
+  line-height: 1.4;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 48px;
+}
+.stack { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.sheet {
+  background: var(--paper);
+  width: 100%;
+  max-width: 210mm;
+  padding: 12mm 13mm;
+  box-shadow: 0 1px 3px rgba(22, 33, 58, .12), 0 8px 24px rgba(22, 33, 58, .08);
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+  min-width: 0;
+}
+.note-screen {
+  max-width: 210mm; width: 100%;
+  font-size: 10.5pt; color: var(--ink-soft);
+}
+.note-screen b { color: var(--ink); }
+
+/* Header band */
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 3mm; }
+.eyebrow { font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 600; font-size: 20pt; line-height: 1.1; margin: 1mm 0 0; text-wrap: balance; }
+.group-fields { display: flex; gap: 4mm; flex-wrap: wrap; }
+.field { display: flex; align-items: flex-end; gap: 2mm; font-size: 9pt; color: var(--muted); }
+.field span.line { display: inline-block; width: 38mm; border-bottom: 1px solid var(--rule-strong); height: 6mm; }
+.lead { margin: 0; color: var(--ink-soft); font-size: 10pt; max-width: 62ch; }
+
+h2 { font-family: var(--display); font-weight: 600; font-size: 12pt; margin: 0; color: var(--ink); }
+h2 small { font-family: var(--body); font-weight: 400; font-size: 9pt; color: var(--muted); margin-left: 2mm; }
+.block { display: flex; flex-direction: column; gap: 2mm; }
+
+/* Writing areas */
+.lines { display: flex; flex-direction: column; }
+.lines i { display: block; height: 8.5mm; border-bottom: 1px solid var(--rule); }
+.box { border: 1px solid var(--rule-strong); border-radius: 2mm; min-height: 22mm; padding: 2mm 3mm; color: var(--muted); font-size: 8.5pt; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 2mm; }
+.chip { border: 1px solid var(--rule-strong); border-radius: 10mm; padding: 1mm 3.5mm; font-size: 9pt; color: var(--ink-soft); }
+.chip.other { padding-right: 22mm; }
+
+/* Goal template rows */
+.template { display: grid; grid-template-columns: 38mm 1fr; border: 1px solid var(--rule-strong); border-radius: 2mm; overflow: hidden; }
+.template > div { padding: 2mm 3mm; border-top: 1px solid var(--rule); min-height: 13mm; }
+.template > div:nth-child(1), .template > div:nth-child(2) { border-top: none; }
+.template .k { background: var(--blue-tint); display: flex; flex-direction: column; justify-content: center; }
+.template .k b { font-size: 9.5pt; }
+.template .k em { font-style: normal; font-size: 8pt; color: var(--blue); }
+.template .v { font-size: 8pt; color: var(--muted); }
+
+/* Tables */
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 150mm; font-variant-numeric: tabular-nums; }
+th { text-align: left; font-size: 8.5pt; font-weight: 600; color: var(--paper); background: var(--ink); padding: 1.8mm 2mm; vertical-align: bottom; }
+th small { display: block; font-weight: 400; color: #C9D2E0; font-size: 7.5pt; }
+td { border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); height: 15mm; padding: 1.5mm 2mm; vertical-align: top; font-size: 8.5pt; color: var(--muted); }
+td:last-child { border-right: none; }
+td.id { color: var(--ink); font-weight: 600; width: 9mm; }
+td.circle { white-space: nowrap; letter-spacing: .02em; color: var(--ink-soft); vertical-align: middle; text-align: center; }
+tr.example td { background: var(--orange-tint); color: var(--ink); font-style: italic; height: auto; }
+tr.example td.id { font-style: normal; color: var(--orange); }
+
+/* Tips / legends */
+.tips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+.tip { background: var(--blue-tint); border-radius: 2mm; padding: 2.5mm 3mm; font-size: 8.5pt; color: var(--ink-soft); min-width: 0; }
+.tip b { color: var(--ink); display: block; font-size: 9pt; margin-bottom: .5mm; }
+.tip.warn { background: var(--orange-tint); }
+
+/* Value x cost grid */
+.matrix { display: grid; grid-template-columns: 8mm 1fr 1fr; grid-template-rows: 1fr 1fr 8mm; gap: 0; height: 112mm; }
+.axis-y { grid-row: 1 / span 2; grid-column: 1; display: flex; align-items: center; justify-content: center; }
+.axis-y span { transform: rotate(-90deg); white-space: nowrap; font-size: 8.5pt; font-weight: 600; color: var(--ink-soft); letter-spacing: .06em; text-transform: uppercase; }
+.axis-x { grid-column: 2 / span 2; grid-row: 3; display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; font-weight: 600; color: var(--ink-soft); letter-spacing: .06em; text-transform: uppercase; padding: 0 2mm; }
+.q { border: 1px solid var(--rule-strong); padding: 2.5mm 3mm; display: flex; flex-direction: column; gap: .5mm; }
+.q b { font-family: var(--display); font-size: 10.5pt; }
+.q span { font-size: 8pt; color: var(--muted); }
+.q.pick { background: var(--blue-tint); border-color: var(--blue); }
+.q.pick b { color: var(--blue); }
+.q.pay { background: var(--orange-tint); }
+.q.pay b { color: var(--orange); }
+.q.tl { border-radius: 2mm 0 0 0; } .q.tr { border-radius: 0 2mm 0 0; border-left: none; }
+.q.bl { border-radius: 0 0 0 2mm; border-top: none; } .q.br { border-radius: 0 0 2mm 0; border-left: none; border-top: none; }
+.yl { position: relative; }
+
+.foot { margin-top: auto; display: flex; justify-content: space-between; font-size: 7.5pt; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 2mm; gap: 4mm; flex-wrap: wrap; }
+
+@media (max-width: 560px) {
+  .tips { grid-template-columns: 1fr; }
+  .template { grid-template-columns: 1fr; }
+  .template > div:nth-child(2) { border-top: 1px solid var(--rule); }
+  .matrix { height: 90vw; min-height: 300px; }
+}
+
+@page { size: A4 portrait; margin: 10mm; }
+@media print {
+  body { background: var(--paper); padding: 0; }
+  .stack { gap: 0; }
+  .note-screen { display: none; }
+  .sheet { box-shadow: none; max-width: none; padding: 0; height: 272mm; overflow: hidden; break-after: page; page-break-after: always; }
+  .sheet:last-child { break-after: auto; page-break-after: auto; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+
+<div class="stack">
+
+<p class="note-screen"><b>Four sheets, one per step.</b> Print one set per group on A4 (Letter also works at “fit to page”). Sheet 4 works well enlarged to A3 if groups place sticky notes on the grid.</p>
+
+<!-- SHEET 1: GOAL -->
+<section class="sheet" aria-label="Sheet 1: Goal">
+  <header class="head">
+    <div>
+      <div class="eyebrow">GQM workshop · Sheet 1 of 4</div>
+      <h1>Goal</h1>
+    </div>
+    <div class="group-fields">
+      <div class="field">Group <span class="line"></span></div>
+      <div class="field">System <span class="line"></span></div>
+    </div>
+  </header>
+  <p class="lead">Pick <b>one</b> non-functional requirement that matters for your system and write it as a GQM goal. Be specific: a goal you can’t measure yet is fine, a goal nobody cares about is not.</p>
+
+  <div class="block">
+    <h2>Our system in one sentence</h2>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+
+  <div class="block">
+    <h2>Quality focus <small>circle one</small></h2>
+    <div class="chips">
+      <span class="chip">Performance</span><span class="chip">Availability</span><span class="chip">Scalability</span><span class="chip">Modifiability</span><span class="chip">Security</span><span class="chip">Usability</span><span class="chip">Deployability</span><span class="chip">Operating cost</span><span class="chip other">Other:</span>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Fill in the goal template</h2>
+    <div class="template">
+      <div class="k"><b>Analyse</b><em>object</em></div><div class="v">Which system, component, interface or process?</div>
+      <div class="k"><b>for the purpose of</b><em>purpose</em></div><div class="v">characterise · evaluate · predict · improve · control</div>
+      <div class="k"><b>with respect to</b><em>quality focus</em></div><div class="v">The NFR, narrowed down (e.g. “response time of checkout”, not just “performance”)</div>
+      <div class="k"><b>from the viewpoint of</b><em>stakeholder</em></div><div class="v">end user · operator · developer · product owner · …</div>
+      <div class="k"><b>in the context of</b><em>situation</em></div><div class="v">load, phase, team, environment: when does this goal apply?</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Why it matters <small>what decision would the answer change?</small></h2>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+
+  <div class="block">
+    <h2>What does “good enough” look like? <small>a target, if you have one</small></h2>
+    <div class="lines"><i></i></div>
+  </div>
+
+  <footer class="foot"><span>Next: sheet 2, list the questions you need answered to judge this goal.</span><span>Goal → Question → Metric</span></footer>
+</section>
+
+<!-- SHEET 2: QUESTIONS -->
+<section class="sheet" aria-label="Sheet 2: Questions">
+  <header class="head">
+    <div>
+      <div class="eyebrow">GQM workshop · Sheet 2 of 4</div>
+      <h1>Questions</h1>
+    </div>
+    <div class="group-fields">
+      <div class="field">Group <span class="line"></span></div>
+    </div>
+  </header>
+  <p class="lead">What do you need to know to decide whether the goal is met? Write questions first; don’t think about data yet. Then rate how much each answer would tell you about the goal.</p>
+
+  <div class="tips">
+    <div class="tip"><b>B · Baseline</b>What is it like now? <i>“What is p95 response time at peak?”</i></div>
+    <div class="tip"><b>C · Cause</b>What affects it? <i>“Where in the call chain is time spent?”</i></div>
+    <div class="tip"><b>E · Evaluation</b>Did it get better, or meet the target? <i>“Is p95 under 800 ms after the change?”</i></div>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <tr><th style="width:9mm">#</th><th>Question</th><th style="width:20mm">Kind<small>B · C · E</small></th><th style="width:28mm">Value<small>circle</small></th><th style="width:16mm">Keep?</th></tr>
+    <tr class="example"><td class="id">ex.</td><td>Where is the time spent in a slow order request?</td><td class="circle">C</td><td class="circle"><b>H</b></td><td class="circle">✓</td></tr>
+    <tr><td class="id">Q1</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q2</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q3</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q4</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q5</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q6</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q7</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+    <tr><td class="id">Q8</td><td></td><td class="circle">B · C · E</td><td class="circle">H · M · L</td><td></td></tr>
+  </table>
+  </div>
+
+  <div class="tips">
+    <div class="tip"><b>H · High value</b>The answer alone tells you a lot about whether the goal is met.</div>
+    <div class="tip"><b>M · Medium value</b>Useful, but only together with other answers.</div>
+    <div class="tip warn"><b>Test each question</b>If the answer surprised you, would anyone do something differently? If not, drop it.</div>
+  </div>
+
+  <footer class="foot"><span>Keep 3–5 questions. Next: sheet 3, find data for each kept question.</span><span>Goal → <b>Question</b> → Metric</span></footer>
+</section>
+
+<!-- SHEET 3: METRICS -->
+<section class="sheet" aria-label="Sheet 3: Metrics and data">
+  <header class="head">
+    <div>
+      <div class="eyebrow">GQM workshop · Sheet 3 of 4</div>
+      <h1>Metrics and data</h1>
+    </div>
+    <div class="group-fields">
+      <div class="field">Group <span class="line"></span></div>
+    </div>
+  </header>
+  <p class="lead">For each kept question, name the data that would answer it. A question may need several metrics, and one metric may serve several questions. Now is the time to ask: do we already have this?</p>
+
+  <div class="tablewrap">
+  <table>
+    <tr><th style="width:9mm">Q#</th><th style="width:9mm">M#</th><th>Metric<small>what exactly, in which unit</small></th><th style="width:34mm">Source<small>tool, log, person</small></th><th style="width:22mm">Data<small>have · collect</small></th><th style="width:19mm">Cost<small>circle</small></th><th style="width:15mm">Type<small>obj · subj</small></th></tr>
+    <tr class="example"><td class="id">ex.</td><td class="id">M1</td><td>Database query time per request (ms)</td><td>Slow-query log</td><td class="circle">have</td><td class="circle"><b>L</b></td><td class="circle">obj</td></tr>
+    <tr><td></td><td class="id">M1</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M2</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M3</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M4</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M5</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M6</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M7</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+    <tr><td></td><td class="id">M8</td><td></td><td></td><td class="circle">have · collect</td><td class="circle">L · M · H</td><td class="circle">obj · subj</td></tr>
+  </table>
+  </div>
+
+  <div class="tips">
+    <div class="tip"><b>L · Low cost</b>The data exists. Someone just has to query or export it.</div>
+    <div class="tip"><b>M · Medium cost</b>Needs a config change, a script, or a short manual count (hours to a few days).</div>
+    <div class="tip warn"><b>H · High cost</b>New instrumentation, a survey, an experiment, or weeks of collecting before you have an answer.</div>
+  </div>
+
+  <footer class="foot"><span>Obj = measured from the system. Subj = depends on who you ask (ratings, surveys). Next: sheet 4, choose.</span><span>Goal → Question → <b>Metric</b></span></footer>
+</section>
+
+<!-- SHEET 4: SELECT -->
+<section class="sheet" aria-label="Sheet 4: Select">
+  <header class="head">
+    <div>
+      <div class="eyebrow">GQM workshop · Sheet 4 of 4</div>
+      <h1>Select</h1>
+    </div>
+    <div class="group-fields">
+      <div class="field">Group <span class="line"></span></div>
+    </div>
+  </header>
+  <p class="lead">Place each question–metric pair (e.g. <b>Q2–M1</b>) on the grid, using the question’s value from sheet 2 and the metric’s cost from sheet 3. Start from the top-left corner.</p>
+
+  <div class="matrix" role="img" aria-label="Grid with question value on the vertical axis and data cost on the horizontal axis">
+    <div class="axis-y"><span>Question value → high</span></div>
+    <div class="q pick tl"><b>Pick first</b><span>High value, cheap data</span></div>
+    <div class="q pay tr"><b>Pay for it if nothing cheaper answers</b><span>High value, costly data</span></div>
+    <div class="q bl"><b>Cheap extras</b><span>Low value, cheap data: take them if they’re free</span></div>
+    <div class="q br"><b>Drop</b><span>Low value, costly data</span></div>
+    <div class="axis-x"><span>Low cost</span><span>Data cost →</span><span>High cost</span></div>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <tr><th style="width:24mm">Our picks</th><th>Question and metric</th><th style="width:44mm">We expect<small>hypothesis, before measuring</small></th></tr>
+    <tr><td class="id">1</td><td></td><td></td></tr>
+    <tr><td class="id">2</td><td></td><td></td></tr>
+    <tr><td class="id">3</td><td></td><td></td></tr>
+  </table>
+  </div>
+
+  <div class="block">
+    <h2>One costly metric worth paying for, and why</h2>
+    <div class="lines"><i></i></div>
+  </div>
+  <div class="block">
+    <h2>Who looks at the answer, and what will they do with it?</h2>
+    <div class="lines"><i></i></div>
+  </div>
+
+  <footer class="foot"><span>Present in 2 minutes: your goal, your picks, and the one metric you would pay for.</span><span>Define top-down · interpret bottom-up</span></footer>
+</section>
+
+</div>
+
+</body></html>
